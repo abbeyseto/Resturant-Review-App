@@ -301,7 +301,11 @@ nav h1 a {
 #restaurant-address {
     font-size: 4.5vw;
 }
-
+	
+.filter-options {
+    width: 95%;
+    padding: 10px;
+}
 #restaurant-hours {
     font-size: 4vw;
 }
@@ -332,5 +336,17 @@ nav h1 a {
 
 #reviews-container {
     width: 90%;
+}
+	
+#restaurants-list {
+    padding: 15px 0 15px;
+}
+	
+#maincontent {
+    margin-left: 42px;
+}
+	
+body {
+    background-color: #f1f1f1;
 }
 }
