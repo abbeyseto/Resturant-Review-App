@@ -6,27 +6,26 @@ self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function (cache) {
             return cache.addAll([
-                '/',
-                '/js/dbhelper.js',
-                '/js/main.js',
-                '/js/restaurant_info.js',
-                '/css/styles.css',
-                '/img/1.jpg',
-                '/img/2.jpg',
-                '/img/3.jpg',
-                '/img/4.jpg',
-                '/img/5.jpg',
-                '/img/6.jpg',
-                '/img/7.jpg',
-                '/img/8.jpg',
-                '/img/9.jpg',
-                '/img/10.jpg',
-                '/data/restaurants.json',
-                '/index.html',
-                '/restaurant.html',
+                '/Resturant-Review-App/',
+                '/Resturant-Review-App/js/dbhelper.js',
+                '/Resturant-Review-App/js/main.js',
+                '/Resturant-Review-App/js/restaurant_info.js',
+                '/Resturant-Review-App/css/styles.css',
+                '/Resturant-Review-App/img/1.jpg',
+                '/Resturant-Review-App/img/2.jpg',
+                '/Resturant-Review-App/img/3.jpg',
+                '/Resturant-Review-App/img/4.jpg',
+                '/Resturant-Review-App/img/5.jpg',
+                '/Resturant-Review-App/img/6.jpg',
+                '/Resturant-Review-App/img/7.jpg',
+                '/Resturant-Review-App/img/8.jpg',
+                '/Resturant-Review-App/img/9.jpg',
+                '/Resturant-Review-App/img/10.jpg',
+                '/Resturant-Review-App/data/restaurants.json',
+                '/Resturant-Review-App/index.html',
+                '/Resturant-Review-App/restaurant.html',
                 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
-                'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
-                'https://abbeyseto.github.io/Resturant-Review-App/data/restaurants.json'
+                'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
             ]);
         }).then(console.log('Yay... cache is sucessful'))
     );
