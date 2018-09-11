@@ -204,3 +204,19 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+if('serviceWorker' in navigator){
+  window.addEventListener("load", function () {
+  navigator.serviceWorker.register('/servw.js')
+  .then(function (res) {
+    console.log(res);
+  console.log( "Service Worker is registered!");
+})
+  .catch(function (err) {
+    console.log(err);
+    console.log("no service worker");
+  })
+   });
+}else{
+    console.log( "Your browser is not compactible with Service Worker!");
+}
