@@ -10,11 +10,31 @@
     "orientation": "portrait-primary",
     "dir": "ltr",
     "lang": "en-US",
+    "serviceworker": {
+        "src": "/Resturant-Review-App/js/servw.js",
+        "scope": "/",
+        "update_via_cache": "none"
+    },
     "icons": [
         {
             "src": "/Resturant-Review-App/img/food.png",
             "type": "image/png",
             "sizes": "144x144"
+        },
+        {
+            "src": "/Resturant-Review-App/img/Icon-96.png",
+            "type": "image/png",
+            "sizes": "96X96"
+        },
+        {
+            "src": "/Resturant-Review-App/img/Icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/Resturant-Review-App/img/Icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
         }
     ]
 }
