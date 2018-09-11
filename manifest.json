@@ -3,7 +3,7 @@
     "short_name": "Restaurant Review",
     "description": "Application that keeps track of reviews of certain restaurants!",
     "start_url": "/Resturant-Review-App/index.html",
-    "scope": "/",
+    "scope": "/Resturant-Review-App/",
     "background_color": "#EEE",
     "theme_color": "#4A148C",
     "display": "standalone",
@@ -12,7 +12,7 @@
     "lang": "en-US",
     "serviceworker": {
         "src": "/Resturant-Review-App/js/servw.js",
-        "scope": "/",
+        "scope": "/Resturant-Review-App/",
         "update_via_cache": "none"
     },
     "icons": [
