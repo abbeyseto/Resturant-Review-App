@@ -161,6 +161,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = "Restaurant image";
   li.append(image);
 
   const name = document.createElement('h1');
@@ -178,7 +179,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  more.tabIndex = '3';
+  more.tabIndex = '0';
   more.setAttribute('aria-label', name.innerHTML+address.innerHTML);
   li.append(more)
 
@@ -211,7 +212,8 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/Resturant-Review-App/js/servw.js')
+  window.addEventListener("load", function () {
+  navigator.serviceWorker.register('/servw.js')
   .then(function (res) {
     console.log(res);
   console.log( "Service Worker is registered!");
@@ -219,44 +221,15 @@ if('serviceWorker' in navigator){
   .catch(function (err) {
     console.log(err);
     console.log("no service worker");
-  });
+  })
+   });
 }else{
     console.log( "Your browser is not compactible with Service Worker!");
 }
 
-let deferredPrompt;
-let btnAdd = document.createElement("div");
-btnAdd.innerHTML = "Add Resturant review to your home screen?";
-btnAdd.setAttribute('display', 'none');
-btnAdd.className = 'install-prompt';
-document.body.append(btnAdd);
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can add to home screen
-  btnAdd.style.display = 'block';
+  // showing the prompt
+  e.prompt();
 });
 
-btnAdd.addEventListener('click', (e) => {
-  // hide our user interface that shows our A2HS button
-  btnAdd.style.display = 'none';
-  // Show the prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice
-    .then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
-    });
-});
-
-window.addEventListener('appinstalled', (evt) => {
-  app.logEvent('a2hs', 'installed');
-});
