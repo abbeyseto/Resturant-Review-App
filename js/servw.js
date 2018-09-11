@@ -31,26 +31,48 @@ self.addEventListener('install', function (event) {
     );
 });
 
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          return cacheName.startsWith('Rest') &&
+                 cacheName != staticCacheName;
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
+});
 
+
+// self.addEventListener('fetch', function (event) {
+
+//     event.respondWith(
+//         caches.match(event.request)
+//             .then(function (response) {
+//                 console.log('Found', event.request, 'in cache');
+//                 return response;
+//             })
+//             .catch(function (response) {
+//                 console.log('Cound not find', event.request, 'in cache, Fetching ...');
+//                 return fetch(event.request)
+//             })
+//             .then(function (response) {
+//                 const clonedResponse = response.clone();
+//                 caches.open(staticCacheName).then(function (cache) {
+//                     cache.put(event.request, clonedResponse);
+//                 })
+//                 return response;
+//             })
+//     )
+// });
 
 self.addEventListener('fetch', function (event) {
-
-    event.respondWith(
-        caches.match(event.request)
-            .then(function (response) {
-                console.log('Found', event.request, 'in cache');
-                return response;
-            })
-            .catch(function (response) {
-                console.log('Cound not find', event.request, 'in cache, Fetching ...');
-                return fetch(event.request)
-            })
-            .then(function (response) {
-                const clonedResponse = response.clone();
-                caches.open(staticCacheName).then(function (cache) {
-                    cache.put(event.request, clonedResponse);
-                })
-                return response;
-            })
-    )
-});
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+return response || fetch(event.request);
+    })
+  );
+  });
