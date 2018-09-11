@@ -26,6 +26,7 @@ self.addEventListener('install', function (event) {
                 '/Resturant-Review-App/img/Icon-192.png',
                 '/Resturant-Review-App/img/Icon-512.png',
                 '/Resturant-Review-App/data/restaurants.json',
+                '/Resturant-Review-App/manifest.json',
                 '/Resturant-Review-App/index.html',
                 '/Resturant-Review-App/restaurant.html',
                 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
